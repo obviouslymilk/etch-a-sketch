@@ -26,6 +26,7 @@
 .cell {
     box-sizing: border-box;
     background-color: white;
+    transition: background-color 0.6s;
     aspect-ratio: 1;
     margin: 1px;
 }

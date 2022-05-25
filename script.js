@@ -1,11 +1,21 @@
-// 1. возможность создание сетки из divs разных размерах в пределах постоянных ширины и высоты контейнера сетки. +
-// 2. добавить функцию покраски клетки и сброса цвета сетки. +
-// 3. связать перемещение мыши с покраской сетки. +
-// 4. добавить цвет радуги (и выбор своего цвета?).
+const rainbowColors = ["#9C4F96", "#FF6355", "#FBA949", "#FAE442", "#8BD448", "#2AA8F2"];
+let rainbowFlag = 0;
+let useRainbow = false;
+
+let cellColor = "black";
+
+function getRainbowColor() {
+    if (rainbowFlag === rainbowColors.length - 1)
+        rainbowFlag = 0;
+    else
+        rainbowFlag++;
+    return rainbowColors[rainbowFlag]
+}
 
 
-function colorCell(e, color) {
-    e.target.style.backgroundColor = color;
+
+function colorCell(e) {
+    e.target.style.backgroundColor = useRainbow ? getRainbowColor() : cellColor;
 }
 
 
@@ -21,7 +31,7 @@ function cell() {
     const cell = document.createElement('div');
     cell.classList.add('cell');
     
-    cell.addEventListener('mouseenter', e => colorCell(e, "black"));
+    cell.addEventListener('mouseenter', colorCell);
 
     return cell;
 }
@@ -45,4 +55,4 @@ function generateGrid(size) {
 const resetButton = document.querySelector('.reset-button');
 resetButton.addEventListener('click', e => resetColors());
 
-generateGrid(8);
+generateGrid(32);
