@@ -1,14 +1,9 @@
 .interface {
     display: flex;
+    flex-direction: column-reverse;
+    align-items: center;
     justify-content: center;
     gap: 24px;
-}
-
-.buttons-container {
-    display: flex;
-    flex-direction: column;
-    padding: 0;
-    margin: 0;
 }
 
 .grid-container {
