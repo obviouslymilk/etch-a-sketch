@@ -1,28 +1,35 @@
-// 1. возможность создание сетки из divs разных размерах в пределах постоянных ширины и высоты контейнера сетки.
-// 2. добавить функцию покраски клетки и сброса цвета сетки.
-// 3. связать перемещение мыши с покраской сетки.
+// 1. возможность создание сетки из divs разных размерах в пределах постоянных ширины и высоты контейнера сетки. +
+// 2. добавить функцию покраски клетки и сброса цвета сетки. +
+// 3. связать перемещение мыши с покраской сетки. +
 // 4. добавить цвет радуги (и выбор своего цвета?).
 
 
-/**
- * Создает div элемент клетки
- * @returns объект клетки
- */
+function colorCell(e, color) {
+    e.target.style.backgroundColor = color;
+}
+
+
+function resetColors() {
+    const cells = document.querySelectorAll('.cell');
+    cells.forEach(cell => {
+        cell.style.backgroundColor = "white";
+    })
+}
+
+
 function cell() {
     const cell = document.createElement('div');
     cell.classList.add('cell');
     
-    return cell
+    cell.addEventListener('mouseenter', e => colorCell(e, "black"));
+
+    return cell;
 }
 
 
-/**
- * Генерирует сетку в контейнере DOM'а
- * @param {int} size размер стороны сетки
- */
 function generateGrid(size) {
     const grid = document.querySelector('.grid-container');
-    grid.innerHTML = ''
+    grid.innerHTML = '';
 
     for (let i = 0; i < size; i++) {
         for (let j = 0; j < size; j++) {
@@ -31,6 +38,11 @@ function generateGrid(size) {
     } 
     
     grid.style.gridTemplateColumns = `repeat(${size}, 1fr)`;
-    grid.style.gridTemplateRows = `repeat(${size}, 1fr)`
+    grid.style.gridTemplateRows = `repeat(${size}, 1fr)`;
 }
 
+
+const resetButton = document.querySelector('.reset-button');
+resetButton.addEventListener('click', e => resetColors());
+
+generateGrid(8);

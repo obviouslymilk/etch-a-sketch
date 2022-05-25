@@ -4,6 +4,13 @@
     gap: 24px;
 }
 
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    margin: 0;
+}
+
 .grid-container {
     display: grid;
     grid-template-areas: repeat(10, 1fr);
