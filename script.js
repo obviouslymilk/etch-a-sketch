@@ -2,7 +2,7 @@ const rainbowColors = ["#9C4F96", "#FF6355", "#FBA949", "#FAE442", "#8BD448", "#
 let rainbowFlag = 0;
 let useRainbow = false;
 
-let cellColor = "black";
+let cellColor = "rgb(71, 71, 71)";
 
 function getRainbowColor() {
   rainbowFlag = (rainbowFlag === rainbowColors.length - 1) ? 0 : rainbowFlag + 1;
@@ -52,8 +52,11 @@ const resetButton = document.querySelector('.reset-button');
 resetButton.addEventListener('click', e => resetColors());
 
 const sizeRange = document.querySelector('#size-range');
+const sizeLabel = document.querySelector("#size-label");
 sizeRange.addEventListener('change', e => {
     generateGrid(e.target.value);
+
+    sizeLabel.innerText = `${e.target.value}x${e.target.value}`   
 })
 
 const rainbowCheckbox = document.querySelector("#rainbow");
