@@ -1,3 +1,9 @@
+.interface {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+}
+
 .grid-container {
     display: grid;
     grid-template-areas: repeat(10, 1fr);
